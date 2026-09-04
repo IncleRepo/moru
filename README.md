@@ -70,9 +70,11 @@ $moru 이 변경사항을 리뷰만 해줘. 코드는 수정하지 마.
 
 파일 수정이나 외부 작업을 원하지 않는다면 요청에 함께 적어 주세요. 예를 들어 `리뷰만 하고 파일은 수정하지 마`라고 요청하면 검토만 진행합니다.
 
-## 전문 스킬 연결
+## 문서
 
-Moru는 Codex에 설치된 전문 스킬을 작업에 맞게 선택합니다. 자주 쓰는 작업 방식은 독립된 스킬로 만들고, 프로젝트의 `MORU.md`에 기본 스킬로 등록할 수 있습니다. 제작, 설치와 선택 우선순위는 [프로젝트와 스킬 설정](./docs/project-setup.md)에서 확인하세요.
+- [시작하기](./docs/getting-started.md)
+- [프로젝트와 스킬 설정](./docs/project-setup.md)
+- [작동 구조](./docs/architecture.md)
 
 ## 제거와 문제 해결
 
@@ -86,37 +88,6 @@ codex plugin marketplace remove moru
 - 업데이트했는데 동작이 그대로라면 새 대화를 시작하세요.
 - `moru@moru`가 보이지 않으면 `codex plugin marketplace upgrade moru`를 실행한 뒤 다시 설치하세요.
 
-## 프로젝트 문서 연결
-
-매번 참고해야 하는 문서가 있다면 프로젝트 루트에 `MORU.md`를 만드세요. 요구사항, 팀 규칙, 참고 자료와 작업 대상의 경로를 한곳에 적어 둘 수 있습니다.
-
-```markdown
-# Moru Project Context
-
-## Targets
-- src/
-- tests/
-
-## Requirements
-- docs/requirements.md
-
-## Policies
-- AGENTS.md
-- docs/security-policy.md
-
-## Skills
-- $backend-conventions — 백엔드 구현과 리뷰에 우선 사용
-- $database-safety — 데이터베이스 작업에 우선 사용
-
-## References
-- docs/examples/
-
-## Excluded
-- legacy/
-```
-
-필요한 항목만 남겨 사용하면 됩니다. 각 항목에는 문서 본문이 아니라 파일 경로를 적습니다. 비밀번호, 토큰, 개인 키는 넣지 마세요. 전체 예시는 [MORU.template.md](./plugins/moru/skills/moru/assets/MORU.template.md)에서 볼 수 있습니다.
-
 ## 작업 방식
 
 - 프로젝트의 공식 규칙을 먼저 따릅니다.
@@ -125,7 +96,7 @@ codex plugin marketplace remove moru
 - 코드와 문서는 테스트, 빌드, 렌더링 등 알맞은 방법으로 확인합니다.
 - 완료 여부는 `COMPLETE`(완료), `PARTIAL`(일부 완료), `BLOCKED`(진행 불가)로 나눠 보고합니다.
 
-자세한 사용법은 [Moru 문서](./docs/README.md), 전체 처리 흐름은 [작동 구조](./docs/architecture.md)에서 확인할 수 있습니다.
+전체 문서는 [문서 홈](./docs/README.md)에서 확인할 수 있습니다.
 
 ## 저장소 구조
 
@@ -153,8 +124,6 @@ moru/
 │           ├─ SKILL.md
 │           ├─ agents/
 │           │  └─ openai.yaml
-│           ├─ assets/
-│           │  └─ MORU.template.md
 │           └─ references/
 │              ├─ input-contract.md
 │              ├─ routing.md
