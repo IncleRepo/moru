@@ -26,6 +26,8 @@ For each workstream, use this priority:
 
 Do not copy a specialist skill's domain procedure into Moru. Route the work to it and manage its inputs, authorization, output, and evidence.
 
+Specialist skills remain independent of Moru and do not need Moru-specific instructions. When several capabilities appear applicable, honor a capability explicitly named by the user when it is available and suitable; otherwise use the smallest sufficient set. Prefer the narrower task-specific skill over a broad catch-all. If a material conflict between selected skills cannot be resolved from project policy and evidence, ask only for the decision that changes the outcome.
+
 ## Build the dependency plan
 
 Represent prerequisites before considering parallelism. Common boundaries include investigation before mutation, implementation before publication, and creation before destination verification.

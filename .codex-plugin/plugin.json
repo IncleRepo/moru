@@ -1,7 +1,7 @@
 {
   "name": "moru",
   "version": "0.1.0",
-  "description": "Carry multi-step work through source discovery, routing, execution, verification, and one consolidated result.",
+  "description": "Coordinate and verify multi-step Codex work using project context.",
   "author": {
     "name": "Kim Hak In",
     "url": "https://github.com/IncleRepo"
@@ -18,8 +18,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Moru",
-    "shortDescription": "End-to-end task orchestration with verification.",
-    "longDescription": "Moru coordinates explicitly requested multi-step work across project sources, specialist skills, tools, connected services, and optional subagents. It preserves scope and authorization, verifies real outcomes, and returns one consolidated result.",
+    "shortDescription": "Run and verify multi-step project work.",
+    "longDescription": "Moru reads optional project guidance from MORU.md, selects available skills and tools for each part of a request, and reports the work with verification results. It follows the scope and permissions stated by the user.",
     "developerName": "IncleRepo",
     "category": "Productivity",
     "capabilities": [
@@ -27,6 +27,8 @@
       "Verification"
     ],
     "websiteURL": "https://github.com/IncleRepo/moru",
+    "privacyPolicyURL": "https://github.com/IncleRepo/moru/blob/main/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/IncleRepo/moru/blob/main/TERMS.md",
     "defaultPrompt": [
       "Use $moru to complete this request and verify the result.",
       "Use $moru to implement this change and run the relevant checks.",

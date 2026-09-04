@@ -10,7 +10,7 @@ import sys
 from pathlib import Path
 
 
-REQUIRED_PATHS = (
+REQUIRED_RUNTIME_PATHS = (
     ".codex-plugin/plugin.json",
     "skills/moru/SKILL.md",
     "skills/moru/agents/openai.yaml",
@@ -20,6 +20,14 @@ REQUIRED_PATHS = (
     "skills/moru/references/input-contract.md",
     "skills/moru/references/routing.md",
     "skills/moru/references/quality-contract.md",
+)
+
+REQUIRED_SOURCE_PATHS = (
+    "VERSION",
+    "evals/cases.json",
+    "PRIVACY.md",
+    "SUPPORT.md",
+    "TERMS.md",
 )
 
 
@@ -43,10 +51,11 @@ def local_markdown_links(path: Path) -> list[str]:
     return [link.split("#", 1)[0] for link in links if link and not re.match(r"^[a-z]+://|^#", link)]
 
 
-def validate(root: Path) -> list[str]:
+def validate(root: Path, packaged: bool = False) -> list[str]:
     errors: list[str] = []
 
-    for relative in REQUIRED_PATHS:
+    required_paths = REQUIRED_RUNTIME_PATHS if packaged else REQUIRED_RUNTIME_PATHS + REQUIRED_SOURCE_PATHS
+    for relative in required_paths:
         if not (root / relative).is_file():
             errors.append(f"missing required file: {relative}")
 
@@ -59,8 +68,12 @@ def validate(root: Path) -> list[str]:
         else:
             if manifest.get("name") != "moru":
                 errors.append("plugin manifest name must be 'moru'")
-            if manifest.get("version") != (root / "VERSION").read_text(encoding="utf-8").strip():
-                errors.append("plugin manifest version must match VERSION")
+            version_path = root / "VERSION"
+            if version_path.is_file():
+                if manifest.get("version") != version_path.read_text(encoding="utf-8").strip():
+                    errors.append("plugin manifest version must match VERSION")
+            elif not packaged:
+                errors.append("VERSION is required when validating the source tree")
             if manifest.get("skills") != "./skills/":
                 errors.append("plugin manifest skills must be './skills/'")
 
@@ -95,8 +108,12 @@ def validate(root: Path) -> list[str]:
                 errors.append(f"broken link in {markdown_path.relative_to(root)}: {link}")
 
     openai_yaml = root / "skills/moru/agents/openai.yaml"
-    if openai_yaml.is_file() and "$moru" not in openai_yaml.read_text(encoding="utf-8"):
-        errors.append("agents/openai.yaml default_prompt must mention $moru")
+    if openai_yaml.is_file():
+        openai_yaml_text = openai_yaml.read_text(encoding="utf-8")
+        if "$moru" not in openai_yaml_text:
+            errors.append("agents/openai.yaml default_prompt must mention $moru")
+        if "allow_implicit_invocation: false" not in openai_yaml_text:
+            errors.append("Moru must disable implicit skill invocation")
 
     return errors
 
@@ -104,9 +121,10 @@ def validate(root: Path) -> list[str]:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("root", nargs="?", default=".")
+    parser.add_argument("--packaged", action="store_true")
     args = parser.parse_args()
     root = Path(args.root).resolve()
-    errors = validate(root)
+    errors = validate(root, packaged=args.packaged)
 
     if errors:
         print("Moru skill validation failed:")

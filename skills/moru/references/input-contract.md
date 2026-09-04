@@ -35,6 +35,8 @@ Treat paths in `MORU.md` as relative to the project root unless they are absolut
 
 ## `MORU.md` format
 
+`MORU.md` is an optional Moru project-context convention, not part of the Agent Skills specification. Projects that do not use Moru do not need this file.
+
 Treat `MORU.md` as flexible human-readable Markdown, not as a strict machine schema. Prefer these canonical English headings because they make roles easier to recognize across hosts and models:
 
 - `Targets`

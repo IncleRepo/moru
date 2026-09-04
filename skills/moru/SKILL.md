@@ -1,6 +1,6 @@
 ---
 name: moru
-description: Coordinate an explicitly requested task through completion across multiple steps, skills, tools, connected services, or subagents, with scope control, verification, and one consolidated result. Use when the user invokes $moru or asks Moru to handle an end-to-end or composite task; do not use for ordinary single-step requests that do not request Moru.
+description: Coordinate an explicitly invoked task through project-context discovery, execution across applicable skills and tools, evidence-based verification, and one consolidated result. Use only when the user invokes $moru; do not use for ordinary requests that did not invoke Moru.
 ---
 
 # Moru
@@ -15,7 +15,7 @@ Own the execution of the user's request from interpretation through verification
 - Preserve review-only, diagnosis-only, destination, product, and non-mutation constraints. Authorization for one workstream does not extend to another.
 - Prefer an applicable installed skill or purpose-built tool over recreating its expertise. Read every selected skill completely before acting under it.
 - For every workstream, prefer capabilities in this order: applicable specialist skill, purpose-built product tool or connector, project-provided script or local tool, then a general-purpose tool.
-- Keep a compact execution ledger of planned and completed work, actual changes, evidence, failed checks, retries, blockers, and remaining risk.
+- Keep an internal, ephemeral execution ledger of planned and completed work, actual changes, evidence, failed checks, retries, blockers, and remaining risk. Do not create or publish a ledger artifact unless the user asks for one.
 - Do not equate generated content, a proposed command, or a local draft with a completed external action.
 - Use the user's language for progress and the final report unless the requested artifact, source, or destination requires another language.
 

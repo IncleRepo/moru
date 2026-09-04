@@ -18,8 +18,10 @@ jobs:
           python-version: "3.12"
       - name: Validate package
         run: python scripts/validate_plugin.py .
-      - name: Build release archive
-        run: python scripts/package_plugin.py .
+      - name: Validate behavioral evaluation contract
+        run: python scripts/validate_evals.py
+      - name: Smoke test clean release archive
+        run: python scripts/smoke_package.py .
       - name: Publish GitHub release
         env:
           GH_TOKEN: ${{ github.token }}

@@ -1,7 +1,9 @@
 interface:
   display_name: "모루"
-  short_description: "여러 도구와 전문 작업을 하나의 검증된 결과로 통합합니다"
+  short_description: "프로젝트 문서를 반영해 여러 작업을 실행하고 검증합니다"
   icon_small: "./assets/moru-mark.svg"
   icon_large: "./assets/moru-mark.svg"
   brand_color: "#E8792E"
-  default_prompt: "Use $moru to carry this request through routing, execution, verification, and a concise final report."
+  default_prompt: "Use $moru to complete this request, verify the work, and summarize the result."
+policy:
+  allow_implicit_invocation: false

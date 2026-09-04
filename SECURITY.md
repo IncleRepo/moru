@@ -1,12 +1,17 @@
-# Security Policy
+# 보안 정책
 
-## Reporting a vulnerability
+## 취약점 신고
 
-Please use GitHub's private vulnerability reporting for this repository. Include the affected version, a minimal reproduction, potential impact, and any suggested mitigation.
+GitHub의 비공개 취약점 신고 기능을 이용해 주세요. 영향을 받는 버전, 재현 방법, 예상 영향과 대응 방안을 함께 보내 주세요.
 
-Do not publish credentials, private project documents, exploit details, or sensitive logs in a public issue. If private reporting is unavailable, open a public issue that contains no sensitive detail and asks the maintainer for a private contact channel.
+공개 이슈에는 인증 정보, 사내 문서, 공격 코드, 민감한 로그를 올리지 마세요. 비공개 신고 기능을 사용할 수 없다면 세부 내용을 제외하고 연락 방법을 묻는 이슈를 남겨 주세요.
 
-## Scope
+## 신고 대상
 
-Security reports may concern unsafe authorization expansion, unintended destructive actions, secret exposure, untrusted-document instruction handling, or packaging and installation behavior.
+다음과 같은 문제를 신고할 수 있습니다.
 
+- 요청하지 않은 권한 확대
+- 의도하지 않은 삭제나 변경
+- 비밀 정보 노출
+- 외부 문서에 포함된 지시의 잘못된 실행
+- 패키징 및 설치 과정의 보안 문제

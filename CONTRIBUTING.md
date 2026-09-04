@@ -1,34 +1,37 @@
-# Contributing
+# 기여하기
 
-Thanks for helping improve Moru.
+버그 수정과 기능 제안을 환영합니다.
 
-## Before changing the skill
+## 변경 제안
 
-- Open an issue before a large change to the operating contract or project-context format.
-- Describe an observed failure or a realistic request the change should improve.
-- Keep Moru focused on orchestration. Domain-specific procedures belong in specialist skills or separate plugin capabilities.
-- Do not add private project documents, credentials, personal paths, or copied internal policies.
+- 실행 규칙이나 `MORU.md` 형식을 크게 바꾸려면 먼저 이슈를 열어 주세요.
+- 재현할 수 있는 문제나 개선할 사용 사례를 함께 적어 주세요.
+- 특정 분야의 작업 절차는 해당 분야의 스킬에서 다룹니다.
+- 사내 문서, 인증 정보, 개인 경로는 저장소에 추가하지 마세요.
 
-## Development
+## 개발 및 검증
 
-Fork the repository, create a focused branch, and validate the package before opening a pull request.
+저장소를 포크하고 변경 단위에 맞는 브랜치를 만드세요. Pull Request를 열기 전에 아래 검사를 실행합니다.
 
 ```powershell
 python scripts/validate_plugin.py .
-python scripts/package_plugin.py .
+python scripts/validate_evals.py
+python scripts/smoke_package.py .
 ```
 
-A useful behavioral check includes:
+배포 ZIP을 설치하고 새 대화에서 `evals/cases.json`의 모든 사례를 실행합니다. 다음 항목을 확인하세요.
 
-1. Installation from a local Marketplace followed by a new Codex conversation.
-2. A composite implementation request that should complete.
-3. A review-only request that must remain non-mutating.
-4. A request missing essential authorization that should stop clearly.
-5. A project containing `MORU.md`, confirming that registered sources are used without copying their contents into the skill.
+1. 로컬 Marketplace에서 설치한 뒤 새 대화를 시작할 수 있는지
+2. `$moru`로 호출했을 때만 실행되는지
+3. 여러 단계의 구현 요청이 검증 근거와 함께 완료되는지
+4. 리뷰 전용 요청에서 파일이 변경되지 않는지
+5. 권한이나 도구가 부족할 때 `PARTIAL` 또는 `BLOCKED`로 정확히 보고하는지
+6. `MORU.md`에 등록한 문서를 해당 프로젝트에서 읽는지
+7. 외부 문서에 포함된 지시가 사용자의 작업 범위와 권한을 바꾸지 않는지
 
-## Pull requests
+## Pull Request
 
-- Keep one behavioral change per pull request when practical.
-- Explain the problem, the changed decision rule, and the evidence used to validate it.
-- Update `CHANGELOG.md` for user-visible behavior.
-- Avoid wording-only churn unless it improves routing, safety, or clarity.
+- 하나의 Pull Request에는 가급적 하나의 동작 변경만 담아 주세요.
+- 문제 상황, 바뀐 실행 규칙, 검증 결과를 설명해 주세요.
+- 사용자에게 보이는 동작이 바뀌면 `CHANGELOG.md`도 수정해 주세요.
+- 문구를 수정할 때는 실행 방식이나 의미가 달라지지 않았는지 확인해 주세요.
