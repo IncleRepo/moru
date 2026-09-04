@@ -4,6 +4,13 @@ Moru의 주요 변경 사항을 기록합니다. 버전은 [Semantic Versioning]
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-09-04
+
+### 추가
+
+- 원본 저장소를 변경하지 않는 격리 검증 규칙
+- 임시 복제본, 원격 변경 경로 차단, 정리 확인을 검증하는 회귀 평가
+
 ## [0.1.0] - 2026-09-04
 
 ### 추가
@@ -20,5 +27,6 @@ Moru의 주요 변경 사항을 기록합니다. 버전은 [Semantic Versioning]
 - 개인정보 처리방침, 이용 조건, 지원 문서
 - GitHub Actions 기반 검증 및 릴리스 자동화
 
-[Unreleased]: https://github.com/IncleRepo/moru/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/IncleRepo/moru/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/IncleRepo/moru/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/IncleRepo/moru/releases/tag/v0.1.0

@@ -63,6 +63,18 @@
       "expectedResultShape": "COMPLETE integrated plan without presenting worker transcripts or changing files."
     },
     {
+      "id": "positive-isolated-rehearsal",
+      "kind": "positive",
+      "prompt": "$moru 이 프로젝트를 참고해 실제 수정과 DB 안전 절차를 시험하되 원본과 원격에는 영향을 주지 말고 끝나면 실험 환경을 지워줘.",
+      "fixture": "A local Git repository, disposable database capability, and temporary workspace are available; the source repository must remain untouched.",
+      "expectedBehavior": [
+        "Record the source baseline and perform mutations only in a disposable copy with remote mutation paths removed.",
+        "Use an isolated database with no connection to registered shared environments.",
+        "Verify the experiment, delete only the resolved disposable targets, and re-check the source baseline."
+      ],
+      "expectedResultShape": "COMPLETE with experiment evidence and verified cleanup, or PARTIAL with the exact disposable resource that could not be removed."
+    },
+    {
       "id": "negative-not-invoked",
       "kind": "negative",
       "prompt": "이 함수 이름만 더 명확하게 추천해줘.",

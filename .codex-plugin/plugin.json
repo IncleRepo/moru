@@ -1,6 +1,6 @@
 {
   "name": "moru",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Coordinate and verify multi-step Codex work using project context.",
   "author": {
     "name": "Kim Hak In",
