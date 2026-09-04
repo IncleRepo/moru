@@ -70,4 +70,3 @@ Require the return to distinguish the result, evidence, changes, and unresolved 
 ## Integration
 
 Wait for every result required by the dependency plan. Merge duplicates, resolve disagreement against evidence, and re-check downstream assumptions after a prerequisite changes. The final answer must be owned by the main integrator rather than copied from worker reports.
-

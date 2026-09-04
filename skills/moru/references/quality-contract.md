@@ -65,4 +65,3 @@ Lead with the terminal state and outcome. Include only useful details:
 - incomplete outcomes, remaining risk, or the required user action.
 
 Consolidate worker and tool results around the user's goal. Do not present an execution transcript or bury an incomplete result beneath a polished summary.
-

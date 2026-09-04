@@ -1,22 +1,25 @@
 #!/usr/bin/env python3
-"""Validate Moru's public skill package without third-party dependencies."""
+"""Validate Moru's public plugin package without third-party dependencies."""
 
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
 from pathlib import Path
 
 
 REQUIRED_PATHS = (
-    "SKILL.md",
-    "agents/openai.yaml",
-    "assets/MORU.template.md",
+    ".codex-plugin/plugin.json",
+    "skills/moru/SKILL.md",
+    "skills/moru/agents/openai.yaml",
+    "skills/moru/assets/MORU.template.md",
+    "skills/moru/assets/moru-mark.svg",
     "assets/moru-mark.svg",
-    "references/input-contract.md",
-    "references/routing.md",
-    "references/quality-contract.md",
+    "skills/moru/references/input-contract.md",
+    "skills/moru/references/routing.md",
+    "skills/moru/references/quality-contract.md",
 )
 
 
@@ -47,7 +50,21 @@ def validate(root: Path) -> list[str]:
         if not (root / relative).is_file():
             errors.append(f"missing required file: {relative}")
 
-    skill_path = root / "SKILL.md"
+    manifest_path = root / ".codex-plugin/plugin.json"
+    if manifest_path.is_file():
+        try:
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as error:
+            errors.append(f"invalid plugin manifest JSON: {error}")
+        else:
+            if manifest.get("name") != "moru":
+                errors.append("plugin manifest name must be 'moru'")
+            if manifest.get("version") != (root / "VERSION").read_text(encoding="utf-8").strip():
+                errors.append("plugin manifest version must match VERSION")
+            if manifest.get("skills") != "./skills/":
+                errors.append("plugin manifest skills must be './skills/'")
+
+    skill_path = root / "skills/moru/SKILL.md"
     if skill_path.is_file():
         skill_text = skill_path.read_text(encoding="utf-8")
         try:
@@ -77,7 +94,7 @@ def validate(root: Path) -> list[str]:
             if not target.exists():
                 errors.append(f"broken link in {markdown_path.relative_to(root)}: {link}")
 
-    openai_yaml = root / "agents/openai.yaml"
+    openai_yaml = root / "skills/moru/agents/openai.yaml"
     if openai_yaml.is_file() and "$moru" not in openai_yaml.read_text(encoding="utf-8"):
         errors.append("agents/openai.yaml default_prompt must mention $moru")
 
@@ -97,10 +114,9 @@ def main() -> int:
             print(f"- {error}")
         return 1
 
-    print("Moru skill is valid.")
+    print("Moru plugin package is valid.")
     return 0
 
 
 if __name__ == "__main__":
     sys.exit(main())
-

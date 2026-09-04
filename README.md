@@ -1,7 +1,7 @@
 <div align="center">
   <img src="./assets/moru-mark.svg" width="112" alt="Moru logo" />
   <h1>Moru</h1>
-  <p><strong>요청을 끝까지 실행하고, 검증된 하나의 결과로 돌려주는 Codex skill.</strong></p>
+  <p><strong>요청을 끝까지 실행하고, 검증된 하나의 결과로 돌려주는 Codex plugin.</strong></p>
 
   [![Skill validation](https://github.com/IncleRepo/moru/actions/workflows/validate.yml/badge.svg)](https://github.com/IncleRepo/moru/actions/workflows/validate.yml)
   [![GitHub stars](https://img.shields.io/github/stars/IncleRepo/moru?style=flat-square)](https://github.com/IncleRepo/moru/stargazers)
@@ -9,7 +9,7 @@
   [![License: MIT](https://img.shields.io/badge/license-MIT-111827?style=flat-square)](./LICENSE)
 </div>
 
-Moru(모루)는 모든 분야의 지식을 한 파일에 욱여넣은 만능 프롬프트가 아닙니다. 사용자의 요청을 해석하고, 프로젝트의 기본 문서를 찾고, 필요한 전문 skill과 도구를 선택하고, 작업 결과를 검증해 하나로 통합하는 실행 오케스트레이터입니다.
+Moru(모루)는 모든 분야의 지식을 한 파일에 욱여넣은 만능 프롬프트가 아닙니다. 사용자의 요청을 해석하고, 프로젝트의 기본 문서를 찾고, 필요한 전문 skill과 도구를 선택하고, 작업 결과를 검증해 하나로 통합하는 실행 오케스트레이터입니다. 플러그인 안에는 Moru skill 하나만 들어 있으며 별도 MCP 서버나 외부 계정은 요구하지 않습니다.
 
 ```text
 요청
@@ -32,23 +32,25 @@ Moru(모루)는 모든 분야의 지식을 한 파일에 욱여넣은 만능 프
 
 ## 설치
 
-### Skill Installer
+### 플러그인 디렉터리
 
-Codex에서 다음과 같이 요청합니다.
+공개 디렉터리 등록 후에는 ChatGPT 또는 Codex의 플러그인 화면에서 `Moru`를 찾아 설치할 수 있습니다. 설치 후 새 대화에서 `$moru`를 사용합니다.
 
-```text
-$skill-installer install https://github.com/IncleRepo/moru
-```
+### 소스에서 로컬 테스트
 
-### 직접 설치
-
-사용자 skill 디렉터리에 저장소를 복제합니다.
+저장소를 개인 플러그인 경로에 복제하고 개인 Marketplace에 등록합니다.
 
 ```powershell
-git clone https://github.com/IncleRepo/moru "$HOME\.agents\skills\moru"
+git clone https://github.com/IncleRepo/moru "$HOME\plugins\moru"
 ```
 
-Codex가 skill을 바로 표시하지 않으면 앱이나 CLI를 다시 시작합니다. 설치 위치와 동작 방식은 [공식 OpenAI skill 문서](https://developers.openai.com/codex/skills)를 따릅니다.
+Codex의 `$plugin-creator`에 다음과 같이 요청하면 개인 Marketplace 등록과 검증을 진행할 수 있습니다.
+
+```text
+$plugin-creator Add the existing Moru plugin at ~/plugins/moru to my personal marketplace and validate it.
+```
+
+그다음 플러그인 화면에서 Moru를 설치하고 새 대화를 시작합니다. 자세한 구조와 설치 흐름은 [공식 OpenAI 플러그인 문서](https://learn.chatgpt.com/ko-KR/docs/build-plugins)를 따릅니다.
 
 ## 사용
 
@@ -93,7 +95,7 @@ $moru 이 변경사항을 리뷰만 해줘. 코드는 수정하지 마.
 - legacy/
 ```
 
-Moru는 문서 본문을 skill 내부로 복사하지 않습니다. `MORU.md`에는 경로와 역할만 기록하며, 비밀번호·토큰·개인 키를 넣어서는 안 됩니다. 전체 예시는 [MORU.template.md](./assets/MORU.template.md)에서 확인할 수 있습니다.
+Moru는 문서 본문을 skill 내부로 복사하지 않습니다. `MORU.md`에는 경로와 역할만 기록하며, 비밀번호·토큰·개인 키를 넣어서는 안 됩니다. 전체 예시는 [MORU.template.md](./skills/moru/assets/MORU.template.md)에서 확인할 수 있습니다.
 
 ## 동작 원칙
 
@@ -104,40 +106,44 @@ Moru는 문서 본문을 skill 내부로 복사하지 않습니다. `MORU.md`에
 - 파일 생성, 코드 수정, 외부 작업을 실제 결과와 근거로 검증합니다.
 - 완료 상태는 `COMPLETE`, `PARTIAL`, `BLOCKED` 중 하나로 명확하게 보고합니다.
 
-세부 계약은 [입력과 문서](./references/input-contract.md), [작업 라우팅](./references/routing.md), [검증과 완료](./references/quality-contract.md)에 나뉘어 있습니다.
+세부 계약은 [입력과 문서](./skills/moru/references/input-contract.md), [작업 라우팅](./skills/moru/references/routing.md), [검증과 완료](./skills/moru/references/quality-contract.md)에 나뉘어 있습니다.
 
 ## 저장소 구조
 
 ```text
 moru/
-├─ SKILL.md
-├─ agents/
-│  └─ openai.yaml
+├─ .codex-plugin/
+│  └─ plugin.json
 ├─ assets/
-│  ├─ MORU.template.md
 │  └─ moru-mark.svg
-├─ references/
-│  ├─ input-contract.md
-│  ├─ routing.md
-│  └─ quality-contract.md
+├─ skills/
+│  └─ moru/
+│     ├─ SKILL.md
+│     ├─ agents/
+│     │  └─ openai.yaml
+│     ├─ assets/
+│     │  └─ MORU.template.md
+│     └─ references/
+│        ├─ input-contract.md
+│        ├─ routing.md
+│        └─ quality-contract.md
 ├─ scripts/
-│  ├─ package_skill.py
-│  └─ validate_skill.py
+│  ├─ package_plugin.py
+│  └─ validate_plugin.py
 └─ README.md
 ```
 
 ## 개발
 
 ```powershell
-python scripts/validate_skill.py .
-python scripts/package_skill.py .
+python scripts/validate_plugin.py .
+python scripts/package_plugin.py .
 ```
 
-첫 번째 명령은 필수 파일, frontmatter, 로컬 문서 링크, 공개 저장소에 들어가면 안 되는 절대 사용자 경로를 검사합니다. 두 번째 명령은 `dist/moru-<version>.zip`을 생성합니다.
+첫 번째 명령은 플러그인 매니페스트, Moru skill, frontmatter, 로컬 문서 링크, 공개 저장소에 들어가면 안 되는 절대 사용자 경로를 검사합니다. 두 번째 명령은 `dist/moru-<version>.zip`을 생성합니다.
 
 변경 제안은 [CONTRIBUTING.md](./CONTRIBUTING.md)를 확인해 주세요. 보안 문제는 공개 이슈보다 [SECURITY.md](./SECURITY.md)의 비공개 신고 절차를 사용해 주세요.
 
 ## 라이선스
 
 [MIT License](./LICENSE)
-

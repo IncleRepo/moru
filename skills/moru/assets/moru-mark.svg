@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Moru</title>
+  <desc id="desc">An anvil with a small orange spark</desc>
+  <rect width="256" height="256" rx="56" fill="#111827"/>
+  <path d="M42 82h172c0 29-22 50-55 52l-8 22h29v23H77v-23h29l-9-25C65 123 46 107 42 82Z" fill="#F9FAFB"/>
+  <path d="M91 179h74l13 25H78l13-25Z" fill="#F9FAFB"/>
+  <path d="M183 42l5 17 17 5-17 5-5 17-5-17-17-5 17-5 5-17Z" fill="#E8792E"/>
+</svg>

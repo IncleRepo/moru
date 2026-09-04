@@ -123,4 +123,3 @@ Use a simple human-editable structure such as:
 ```
 
 Omit empty sections. Keep notes only when they change source selection, authority, or scope.
-

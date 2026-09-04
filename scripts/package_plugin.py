@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Create a release zip containing only the installable Moru skill files."""
+"""Create a release zip containing only the installable Moru plugin files."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ from pathlib import Path
 from zipfile import ZIP_DEFLATED, ZipFile
 
 
-PACKAGE_PATHS = ("SKILL.md", "agents", "assets", "references")
+PACKAGE_PATHS = (".codex-plugin", "skills", "assets")
 
 
 def files_under(root: Path, relative: str):
@@ -40,4 +40,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

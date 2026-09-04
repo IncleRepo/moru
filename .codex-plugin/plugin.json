@@ -1,0 +1,39 @@
+{
+  "name": "moru",
+  "version": "0.1.0",
+  "description": "Carry multi-step work through source discovery, routing, execution, verification, and one consolidated result.",
+  "author": {
+    "name": "Kim Hak In",
+    "url": "https://github.com/IncleRepo"
+  },
+  "homepage": "https://github.com/IncleRepo/moru#readme",
+  "repository": "https://github.com/IncleRepo/moru",
+  "license": "MIT",
+  "keywords": [
+    "codex",
+    "orchestration",
+    "workflow",
+    "verification"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Moru",
+    "shortDescription": "End-to-end task orchestration with verification.",
+    "longDescription": "Moru coordinates explicitly requested multi-step work across project sources, specialist skills, tools, connected services, and optional subagents. It preserves scope and authorization, verifies real outcomes, and returns one consolidated result.",
+    "developerName": "IncleRepo",
+    "category": "Productivity",
+    "capabilities": [
+      "Orchestration",
+      "Verification"
+    ],
+    "websiteURL": "https://github.com/IncleRepo/moru",
+    "defaultPrompt": [
+      "Use $moru to complete this request and verify the result.",
+      "Use $moru to implement this change and run the relevant checks.",
+      "Use $moru to review this work without modifying it."
+    ],
+    "brandColor": "#E8792E",
+    "composerIcon": "./assets/moru-mark.svg",
+    "logo": "./assets/moru-mark.svg"
+  }
+}
