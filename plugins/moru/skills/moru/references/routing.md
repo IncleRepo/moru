@@ -26,7 +26,13 @@ For each workstream, use this priority:
 
 Do not copy a specialist skill's domain procedure into Moru. Route the work to it and manage its inputs, authorization, output, and evidence.
 
-Specialist skills remain independent of Moru and do not need Moru-specific instructions. When several capabilities appear applicable, honor a capability explicitly named by the user when it is available and suitable; otherwise use the smallest sufficient set. Prefer the narrower task-specific skill over a broad catch-all. If a material conflict between selected skills cannot be resolved from project policy and evidence, ask only for the decision that changes the outcome.
+Specialist skills remain independent of Moru and do not need Moru-specific instructions. When several capabilities appear applicable, resolve their precedence in this order:
+
+1. A capability explicitly named for the current task, when available and suitable.
+2. An applicable installed skill listed under `Skills` in the project's `MORU.md`.
+3. The smallest sufficient set selected from other applicable installed skills and tools.
+
+Treat project skill entries as preferences rather than an exclusive allowlist. Do not select an unsuitable skill only because it is listed, and do not install an unavailable skill from a `MORU.md` entry. Capability selection never expands the task's access, mutation, or delegation authority. Prefer the narrower task-specific skill over a broad catch-all. If a material conflict between selected skills cannot be resolved from project policy and evidence, ask only for the decision that changes the outcome.
 
 ## Build the dependency plan
 

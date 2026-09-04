@@ -42,15 +42,27 @@ Treat `MORU.md` as flexible human-readable Markdown, not as a strict machine sch
 - `Targets`
 - `Requirements`
 - `Policies`
+- `Skills`
 - `References`
 - `Evidence`
 - `Excluded`
 
 Allow titles, descriptions, annotations, and notes in the user's language. A Korean user does not need to translate explanatory text into English. Infer an equivalent heading only when its role is unambiguous; otherwise use the canonical headings when creating or updating the file.
 
-Each entry may be a relative path, absolute path, service URL, or other usable locator. Allow a short note after the locator when it clarifies purpose, freshness, or precedence. Omit empty sections. Never store credentials, tokens, private keys, or copied sensitive document bodies in the registry.
+Each source-section entry may be a relative path, absolute path, service URL, or other usable locator. Allow a short note after the locator when it clarifies purpose, freshness, or precedence. Omit empty sections. Never store credentials, tokens, private keys, or copied sensitive document bodies in the registry.
 
 Use [the bundled template](../assets/MORU.template.md) as a starting point when creating a new project registry, then remove unused sections and placeholders.
+
+## Project capability preferences
+
+Use the optional `Skills` section to record specialist skills that are stable defaults for the project. Write the installed skill name in `$skill-name` form and add a short scope note when it helps selection.
+
+- A listed skill must already be installed and available to Codex. Do not install a skill merely because it appears in `MORU.md`.
+- Treat the list as project preference, not an exclusive allowlist. Other applicable installed skills and tools remain available.
+- An explicit capability choice in the current request takes precedence over a project preference when it is available and suitable.
+- Do not copy a skill's procedure into `MORU.md`; keep specialist instructions in the independent skill package.
+- A skill entry does not grant data access, mutation permission, credentials, delegation authority, or permission to exceed the current request.
+- If a preferred skill is unavailable, use a safe suitable capability when one exists. Report a capability gap when the missing skill or access is required for the outcome.
 
 ## Source roles
 
@@ -111,6 +123,10 @@ Use a simple human-editable structure such as:
 ## Policies
 - AGENTS.md
 - docs/security-policy.md
+
+## Skills
+- $backend-conventions — 백엔드 구현과 리뷰에 우선 사용
+- $database-safety — 데이터베이스 작업에 우선 사용
 
 ## References
 - docs/examples/

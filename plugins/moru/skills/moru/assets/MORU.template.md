@@ -12,6 +12,10 @@
 - AGENTS.md
 - docs/security-policy.md — 필수 보안 규칙
 
+## Skills
+- $backend-conventions — 백엔드 구현과 리뷰에 우선 사용
+- $database-safety — 데이터베이스 작업에 우선 사용
+
 ## References
 - docs/examples/ — 참고 사례
 

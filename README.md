@@ -70,6 +70,26 @@ $moru 이 변경사항을 리뷰만 해줘. 코드는 수정하지 마.
 
 파일 수정이나 외부 작업을 원하지 않는다면 요청에 함께 적어 주세요. 예를 들어 `리뷰만 하고 파일은 수정하지 마`라고 요청하면 검토만 진행합니다.
 
+## 전문 스킬 연결
+
+Moru는 Codex에 설치된 전문 스킬을 작업에 맞게 선택해 사용합니다. 자주 쓰는 작업 방식이 있다면 스킬로 만든 뒤 Codex에 설치하고, 프로젝트의 `MORU.md`에 기본 스킬로 등록할 수 있습니다.
+
+1. `$skill-creator`로 스킬을 만들거나, 사용할 스킬이 들어 있는 저장소를 준비합니다.
+2. `$skill-installer`에 GitHub 저장소와 스킬 경로를 알려 설치합니다.
+3. 설치 후 새 대화를 시작합니다. 프로젝트에서 계속 사용할 스킬만 `MORU.md`의 `Skills`에 적습니다.
+
+```text
+$skill-installer owner/repository의 skills/backend-review 스킬을 설치해줘.
+```
+
+```markdown
+## Skills
+- $backend-conventions — 백엔드 구현과 리뷰에 우선 사용
+- $database-safety — 데이터베이스 작업에 우선 사용
+```
+
+`Skills`는 설치 명령이나 허용 목록이 아니라 프로젝트의 기본 선택 기준입니다. 현재 요청에서 사용자가 특정 스킬을 지정하면 그 선택을 먼저 따릅니다. 등록하지 않은 스킬도 작업에 더 적합하면 Moru가 사용할 수 있으며, 설치되지 않은 스킬을 적어 두었다고 자동으로 설치되거나 권한이 생기지는 않습니다.
+
 ## 제거와 문제 해결
 
 Moru와 Marketplace 등록을 함께 제거하려면 다음 명령을 실행합니다.
@@ -99,6 +119,10 @@ codex plugin marketplace remove moru
 ## Policies
 - AGENTS.md
 - docs/security-policy.md
+
+## Skills
+- $backend-conventions — 백엔드 구현과 리뷰에 우선 사용
+- $database-safety — 데이터베이스 작업에 우선 사용
 
 ## References
 - docs/examples/

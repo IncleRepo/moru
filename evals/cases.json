@@ -27,6 +27,18 @@
       "expectedResultShape": "One terminal state with the requirement, policy, implementation, and verification reconciled."
     },
     {
+      "id": "positive-project-skill-preference",
+      "kind": "positive",
+      "prompt": "$moru 이 프로젝트의 회원 API를 구현하고 검증해줘.",
+      "fixture": "MORU.md lists $backend-conventions under Skills; it is installed and applicable. Another broader coding skill is also installed.",
+      "expectedBehavior": [
+        "Treat the Skills entry as a project preference and select the installed applicable specialist.",
+        "Do not copy skill instructions into MORU.md or treat the entry as installation or authorization.",
+        "Apply an explicit current-task capability choice before the project preference when one is present."
+      ],
+      "expectedResultShape": "One terminal state with the selected specialist capability and verification evidence reflected in the integrated result."
+    },
+    {
       "id": "positive-review-only",
       "kind": "positive",
       "prompt": "$moru Review this change only. Do not modify files.",

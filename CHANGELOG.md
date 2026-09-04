@@ -4,6 +4,14 @@ Moru의 주요 변경 사항을 기록합니다. 버전은 [Semantic Versioning]
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-09-04
+
+### 추가
+
+- `MORU.md`의 `Skills` 항목을 이용한 프로젝트별 전문 스킬 기본 설정
+- 전문 스킬의 제작, 설치, 프로젝트 연결 방법을 설명하는 사용 안내
+- 프로젝트 스킬 선택 우선순위와 권한 경계를 확인하는 행동 평가
+
 ## [0.2.0] - 2026-09-04
 
 ### 추가
@@ -39,7 +47,8 @@ Moru의 주요 변경 사항을 기록합니다. 버전은 [Semantic Versioning]
 - 개인정보 처리방침, 이용 조건, 지원 문서
 - GitHub Actions 기반 검증 및 릴리스 자동화
 
-[Unreleased]: https://github.com/IncleRepo/moru/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/IncleRepo/moru/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/IncleRepo/moru/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/IncleRepo/moru/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/IncleRepo/moru/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/IncleRepo/moru/releases/tag/v0.1.0
