@@ -35,6 +35,12 @@ codex plugin add moru@moru
 
 설치가 끝나면 새 대화를 시작하세요. GitHub Release의 ZIP은 수동 설치나 특정 버전 보관이 필요할 때 사용할 수 있습니다.
 
+설치 상태는 다음 명령으로 확인할 수 있습니다. 목록에 `moru@moru`가 `installed, enabled`로 표시되면 정상입니다.
+
+```powershell
+codex plugin list
+```
+
 ## 업데이트
 
 Marketplace를 최신 상태로 갱신하고 Moru를 다시 설치합니다.
@@ -45,6 +51,16 @@ codex plugin add moru@moru
 ```
 
 업데이트한 스킬과 도구는 새 대화부터 적용됩니다.
+
+### 기존 개인 설치에서 이전
+
+`v0.1.x`에서 로컬 경로로 등록한 `moru@personal`을 사용했다면 기존 설치를 제거하고 Git Marketplace 버전으로 전환합니다. 개발용 저장소는 삭제할 필요가 없습니다.
+
+```powershell
+codex plugin remove moru@personal
+codex plugin marketplace add IncleRepo/moru --ref main
+codex plugin add moru@moru
+```
 
 ## 사용
 
@@ -63,6 +79,19 @@ $moru 이 변경사항을 리뷰만 해줘. 코드는 수정하지 마.
 ```
 
 파일 수정이나 외부 작업을 원하지 않는다면 요청에 함께 적어 주세요. 예를 들어 `리뷰만 하고 파일은 수정하지 마`라고 요청하면 검토만 진행합니다.
+
+## 제거와 문제 해결
+
+Moru와 Marketplace 등록을 함께 제거하려면 다음 명령을 실행합니다.
+
+```powershell
+codex plugin remove moru@moru
+codex plugin marketplace remove moru
+```
+
+- 업데이트했는데 동작이 그대로라면 새 대화를 시작하세요.
+- `moru@moru`가 보이지 않으면 `codex plugin marketplace upgrade moru`를 실행한 뒤 다시 설치하세요.
+- `moru@personal`과 `moru@moru`가 함께 보이면 이전 설치인 `moru@personal`을 제거하세요.
 
 ## 프로젝트 문서 연결
 
