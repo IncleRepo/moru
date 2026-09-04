@@ -21,7 +21,7 @@ python scripts/smoke_package.py .
 
 배포 ZIP을 설치하고 새 대화에서 `evals/cases.json`의 모든 사례를 실행합니다. 다음 항목을 확인하세요.
 
-1. 로컬 Marketplace에서 설치한 뒤 새 대화를 시작할 수 있는지
+1. 저장소를 Marketplace로 등록하고 `moru@moru`를 설치한 뒤 새 대화를 시작할 수 있는지
 2. `$moru`로 호출했을 때만 실행되는지
 3. 여러 단계의 구현 요청이 검증 근거와 함께 완료되는지
 4. 리뷰 전용 요청에서 파일이 변경되지 않는지

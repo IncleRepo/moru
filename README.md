@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./assets/moru-mark.svg" width="112" alt="Moru logo" />
+  <img src="./plugins/moru/assets/moru-mark.svg" width="112" alt="Moru logo" />
   <h1>Moru</h1>
   <p><strong>Codex용 작업 실행 플러그인</strong></p>
 
@@ -21,19 +21,30 @@
 
 ## 설치
 
-현재 버전은 개인 Marketplace에 등록해 사용할 수 있습니다. 먼저 저장소를 로컬 플러그인 경로에 복제합니다.
+Moru Marketplace를 Codex에 한 번 등록합니다.
 
 ```powershell
-git clone https://github.com/IncleRepo/moru "$HOME\plugins\moru"
+codex plugin marketplace add IncleRepo/moru --ref main
 ```
 
-Codex에서 `$plugin-creator`를 호출해 개인 Marketplace에 등록합니다.
+등록된 Marketplace에서 Moru를 설치합니다.
 
-```text
-$plugin-creator Add the existing Moru plugin at ~/plugins/moru to my personal marketplace and validate it.
+```powershell
+codex plugin add moru@moru
 ```
 
-등록이 끝나면 플러그인 화면에서 Moru를 설치하고 새 대화를 시작하세요. 자세한 과정은 [OpenAI 플러그인 문서](https://learn.chatgpt.com/ko-KR/docs/build-plugins)에서 확인할 수 있습니다.
+설치가 끝나면 새 대화를 시작하세요. GitHub Release의 ZIP은 수동 설치나 특정 버전 보관이 필요할 때 사용할 수 있습니다.
+
+## 업데이트
+
+Marketplace를 최신 상태로 갱신하고 Moru를 다시 설치합니다.
+
+```powershell
+codex plugin marketplace upgrade moru
+codex plugin add moru@moru
+```
+
+업데이트한 스킬과 도구는 새 대화부터 적용됩니다.
 
 ## 사용
 
@@ -78,7 +89,7 @@ $moru 이 변경사항을 리뷰만 해줘. 코드는 수정하지 마.
 - legacy/
 ```
 
-필요한 항목만 남겨 사용하면 됩니다. 각 항목에는 문서 본문이 아니라 파일 경로를 적습니다. 비밀번호, 토큰, 개인 키는 넣지 마세요. 전체 예시는 [MORU.template.md](./skills/moru/assets/MORU.template.md)에서 볼 수 있습니다.
+필요한 항목만 남겨 사용하면 됩니다. 각 항목에는 문서 본문이 아니라 파일 경로를 적습니다. 비밀번호, 토큰, 개인 키는 넣지 마세요. 전체 예시는 [MORU.template.md](./plugins/moru/skills/moru/assets/MORU.template.md)에서 볼 수 있습니다.
 
 ## 작업 방식
 
@@ -88,30 +99,35 @@ $moru 이 변경사항을 리뷰만 해줘. 코드는 수정하지 마.
 - 코드와 문서는 테스트, 빌드, 렌더링 등 알맞은 방법으로 확인합니다.
 - 완료 여부는 `COMPLETE`(완료), `PARTIAL`(일부 완료), `BLOCKED`(진행 불가)로 나눠 보고합니다.
 
-자세한 규칙은 [입력과 문서](./skills/moru/references/input-contract.md), [작업 분배](./skills/moru/references/routing.md), [검증과 완료](./skills/moru/references/quality-contract.md)에 정리되어 있습니다.
+자세한 규칙은 [입력과 문서](./plugins/moru/skills/moru/references/input-contract.md), [작업 분배](./plugins/moru/skills/moru/references/routing.md), [검증과 완료](./plugins/moru/skills/moru/references/quality-contract.md)에 정리되어 있습니다.
 
 ## 저장소 구조
 
 ```text
 moru/
-├─ .codex-plugin/
-│  └─ plugin.json
-├─ assets/
-│  └─ moru-mark.svg
+├─ .agents/
+│  └─ plugins/
+│     └─ marketplace.json
 ├─ evals/
 │  ├─ README.md
 │  └─ cases.json
-├─ skills/
+├─ plugins/
 │  └─ moru/
-│     ├─ SKILL.md
-│     ├─ agents/
-│     │  └─ openai.yaml
+│     ├─ .codex-plugin/
+│     │  └─ plugin.json
 │     ├─ assets/
-│     │  └─ MORU.template.md
-│     └─ references/
-│        ├─ input-contract.md
-│        ├─ routing.md
-│        └─ quality-contract.md
+│     │  └─ moru-mark.svg
+│     └─ skills/
+│        └─ moru/
+│           ├─ SKILL.md
+│           ├─ agents/
+│           │  └─ openai.yaml
+│           ├─ assets/
+│           │  └─ MORU.template.md
+│           └─ references/
+│              ├─ input-contract.md
+│              ├─ routing.md
+│              └─ quality-contract.md
 ├─ scripts/
 │  ├─ package_plugin.py
 │  ├─ smoke_package.py

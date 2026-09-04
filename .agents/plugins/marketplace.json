@@ -1,0 +1,20 @@
+{
+  "name": "moru",
+  "interface": {
+    "displayName": "Moru"
+  },
+  "plugins": [
+    {
+      "name": "moru",
+      "source": {
+        "source": "local",
+        "path": "./plugins/moru"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

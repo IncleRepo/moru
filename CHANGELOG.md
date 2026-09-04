@@ -4,6 +4,18 @@ Moru의 주요 변경 사항을 기록합니다. 버전은 [Semantic Versioning]
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-09-04
+
+### 추가
+
+- Git Marketplace에서 바로 등록할 수 있는 저장소 구조
+- `codex plugin marketplace upgrade moru`를 이용한 업데이트 흐름
+
+### 변경
+
+- 설치 가능한 플러그인 파일을 `plugins/moru` 아래로 이동
+- README와 패키지 검증 도구를 Marketplace 구조에 맞게 정비
+
 ## [0.1.1] - 2026-09-04
 
 ### 추가
@@ -27,6 +39,7 @@ Moru의 주요 변경 사항을 기록합니다. 버전은 [Semantic Versioning]
 - 개인정보 처리방침, 이용 조건, 지원 문서
 - GitHub Actions 기반 검증 및 릴리스 자동화
 
-[Unreleased]: https://github.com/IncleRepo/moru/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/IncleRepo/moru/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/IncleRepo/moru/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/IncleRepo/moru/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/IncleRepo/moru/releases/tag/v0.1.0
