@@ -1,0 +1,22 @@
+name: Feature request
+description: Propose a focused improvement to Moru's orchestration behavior
+title: "[Feature] "
+labels: [enhancement]
+body:
+  - type: textarea
+    attributes:
+      label: Problem
+      description: What realistic request or failure should Moru handle better?
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Proposed behavior
+      description: Describe the decision rule or outcome, not only preferred wording.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Acceptance evidence
+      description: How can the improvement be tested without private project data?
+

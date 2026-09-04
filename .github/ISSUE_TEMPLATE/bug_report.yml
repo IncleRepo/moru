@@ -1,0 +1,30 @@
+name: Bug report
+description: Report behavior that violates Moru's documented contract
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: textarea
+    attributes:
+      label: Request
+      description: Provide a minimal request that reproduces the behavior. Remove private data.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Moru version
+      placeholder: 0.1.0
+  - type: textarea
+    attributes:
+      label: Relevant environment details
+      description: Codex surface, operating system, and applicable skills or tools. Do not include secrets.
+
