@@ -52,16 +52,6 @@ codex plugin add moru@moru
 
 업데이트한 스킬과 도구는 새 대화부터 적용됩니다.
 
-### 기존 개인 설치에서 이전
-
-`v0.1.x`에서 로컬 경로로 등록한 `moru@personal`을 사용했다면 기존 설치를 제거하고 Git Marketplace 버전으로 전환합니다. 개발용 저장소는 삭제할 필요가 없습니다.
-
-```powershell
-codex plugin remove moru@personal
-codex plugin marketplace add IncleRepo/moru --ref main
-codex plugin add moru@moru
-```
-
 ## 사용
 
 요청 앞에 `$moru`를 붙입니다.
@@ -91,7 +81,6 @@ codex plugin marketplace remove moru
 
 - 업데이트했는데 동작이 그대로라면 새 대화를 시작하세요.
 - `moru@moru`가 보이지 않으면 `codex plugin marketplace upgrade moru`를 실행한 뒤 다시 설치하세요.
-- `moru@personal`과 `moru@moru`가 함께 보이면 이전 설치인 `moru@personal`을 제거하세요.
 
 ## 프로젝트 문서 연결
 
